@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "probe": "node src/probe.mjs",
-    "roi": "node src/roi.mjs"
+    "roi": "node src/roi.mjs",
+    "demo": "node src/demo.mjs"
   },
   "engines": {
     "node": ">=18"
