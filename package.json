@@ -1,0 +1,21 @@
+{
+  "name": "mcd-card-roi",
+  "version": "0.1.0",
+  "description": "用你过去一年的真实麦当劳订单，算清麦金卡到底值不值",
+  "type": "module",
+  "scripts": {
+    "probe": "node src/probe.mjs",
+    "roi": "node src/roi.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "mcdonald",
+    "mcd-mcp",
+    "roi",
+    "membership-card"
+  ],
+  "license": "MIT"
+}
