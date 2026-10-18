@@ -130,3 +130,22 @@ export function resultText(result) {
 export function resultIsError(result) {
   return !!(result && result.isError);
 }
+
+// MCP 工具返回的 text 里通常内嵌了 {"success":true,...} 的原始 JSON，
+// 这里把它提取并解析出来；失败返回 null。
+export function extractEmbeddedJson(text) {
+  if (!text) return null;
+  const m = text.match(/\{"success":true[\s\S]*\}$/);
+  if (m) {
+    try {
+      return JSON.parse(m[0]);
+    } catch {
+      /* fall through */
+    }
+  }
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
