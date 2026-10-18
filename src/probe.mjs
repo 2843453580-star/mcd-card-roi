@@ -1,7 +1,9 @@
 // 探路脚本：列出麦当劳 MCP 的全部工具 + 参数 schema，用于核对真实字段。
 // 用法：先设置 MCD_MCP_TOKEN，再 npm run probe
 
-import { McpClient } from './mcp.mjs';
+import { McpClient, loadDotEnv } from './mcp.mjs';
+
+loadDotEnv();
 
 const token = process.env.MCD_MCP_TOKEN;
 if (!token) {

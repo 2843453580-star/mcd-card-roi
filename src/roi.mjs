@@ -5,7 +5,10 @@ import {
   resultText,
   resultIsError,
   extractEmbeddedJson,
+  loadDotEnv,
 } from './mcp.mjs';
+
+loadDotEnv();
 
 const token = process.env.MCD_MCP_TOKEN;
 if (!token) {

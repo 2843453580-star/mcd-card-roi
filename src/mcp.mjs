@@ -1,6 +1,21 @@
 // 极简 MCP Streamable HTTP 客户端（零依赖，Node >= 18 自带 fetch）。
 // 用于连接麦当劳 MCP Server（https://mcp.mcd.cn）。
 
+import { readFileSync } from 'node:fs';
+
+// 读取本地 .env（若存在），把 KEY=VALUE 注入 process.env（不覆盖已存在的变量）。
+export function loadDotEnv(path = '.env') {
+  try {
+    const text = readFileSync(path, 'utf8');
+    for (const line of text.split(/\r?\n/)) {
+      const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+      if (m && !(m[1] in process.env)) process.env[m[1]] = m[2];
+    }
+  } catch {
+    /* 没有 .env 时忽略 */
+  }
+}
+
 const JSON_RPC = '2.0';
 
 // 解析 SSE（text/event-stream）响应，取 data: 行的 JSON。
