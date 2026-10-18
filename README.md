@@ -45,8 +45,9 @@ export MCD_MCP_TOKEN=你的token
 $env:MCD_MCP_TOKEN="你的token"
 
 # 2. 跑通（零依赖，仅需 Node >= 18）
+npm run demo    # 无需 Token，先看一份演示报告（看看效果）
 npm run probe   # 列出全部可用工具与参数
-npm run roi     # 生成你的麦门消费画像 + 麦金卡 ROI 报告
+npm run roi     # 用你的真实订单生成消费画像 + 麦金卡 ROI 报告
 ```
 
 ## 目录结构
