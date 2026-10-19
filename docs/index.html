@@ -205,8 +205,8 @@ npm run review         # 生成你的真实述职报告 + 年度奖项</pre>
 <script>
 const $ = (id) => document.getElementById(id);
 
-// ⚠️ 部署后把这里换成你的 Cloudflare Worker 地址
-const WORKER_URL = 'https://YOUR-WORKER.workers.dev';
+// Cloudflare Worker 代理地址（已部署）
+const WORKER_URL = 'https://mcd-proxy.2843453580.workers.dev';
 
 const PRESETS = {
   student: { orders:15, avg:18, perm:1.5, cities:2, late:3, bf:0, suixin:70, set:0 },
