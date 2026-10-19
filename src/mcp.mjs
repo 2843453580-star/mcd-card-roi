@@ -100,7 +100,7 @@ export class McpClient {
       params: {
         protocolVersion: '2025-06-18',
         capabilities: {},
-        clientInfo: { name: 'mcd-card-roi', version: '0.1.0' },
+        clientInfo: { name: 'mcd-performance-review', version: '0.2.0' },
       },
     });
     await this.#post(
