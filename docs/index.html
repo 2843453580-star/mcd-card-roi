@@ -40,6 +40,11 @@
   .token-guide ol li { margin:7px 0; }
   .token-guide a { color:var(--yellow); }
   .token-guide .btn { font-size:13px; padding:8px 16px; }
+  .why { margin-top:14px; padding:14px 16px; background:#0d0d0d; border:1px solid var(--border); border-radius:8px; }
+  .why-title { color:var(--yellow); font-weight:600; font-size:14px; margin-bottom:8px; }
+  .why ul { margin:0 0 0 18px; font-size:13px; color:var(--dim); }
+  .why ul li { margin:7px 0; }
+  .why code { color:var(--green); background:#1a1a1a; padding:1px 5px; border-radius:4px; }
   #login-status { margin:12px 0; font-size:14px; min-height:20px; }
 
   .gen { display:grid; grid-template-columns: 340px 1fr; gap: 24px; align-items:start; }
@@ -116,6 +121,16 @@
     <h2><span class="num">①</span> 真实一键 · 登录自动拉取你的订单</h2>
     <div class="login-box">
       <p class="lead">粘贴你的麦当劳 MCP Token，自动拉取你的<b style="color:var(--yellow)">历史订单 + 积分</b>，算出真实画像、评级和年度奖项。0 手动、0 记数字。</p>
+
+      <div class="why">
+        <div class="why-title">🔑 为什么要贴 Token？</div>
+        <ul>
+          <li><b>为了让报告是「你的」</b>：订单和积分都绑在你自己的麦当劳账号上，只有用你自己的 MCP Token 才能拉到你真实的订单数据；没有 Token，只能看演示数据。</li>
+          <li><b>只读，不下单</b>：本页只调用 <code>order-list</code>（查订单）和 <code>query-my-account</code>（查积分）两个只读工具，不会下单、不动你的券和积分。</li>
+          <li><b>不落库、可撤回</b>：Token 只在你浏览器 → 麦当劳官方 MCP 这条链路上，中转代理不记录、不存储；随时可去控制台重置。</li>
+        </ul>
+      </div>
+
       <input type="password" id="token" placeholder="粘贴 MCP Token（open.mcd.cn/mcp 控制台获取）" autocomplete="off">
       <button id="login-btn">一键拉取真实报告 →</button>
       <div id="login-status"></div>
