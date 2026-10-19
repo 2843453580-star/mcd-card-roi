@@ -1,11 +1,11 @@
 {
-  "name": "mcd-card-roi",
-  "version": "0.1.0",
-  "description": "用你过去一年的真实麦当劳订单，算清麦金卡到底值不值",
+  "name": "mcd-performance-review",
+  "version": "0.2.0",
+  "description": "麦门述职报告：用真实麦当劳订单生成年度绩效回顾 + 省钱参谋",
   "type": "module",
   "scripts": {
     "probe": "node src/probe.mjs",
-    "roi": "node src/roi.mjs",
+    "review": "node src/review.mjs",
     "demo": "node src/demo.mjs"
   },
   "engines": {
@@ -15,8 +15,9 @@
     "mcp",
     "mcdonald",
     "mcd-mcp",
-    "roi",
-    "membership-card"
+    "mcd-performance-review",
+    "麦门",
+    "述职报告"
   ],
   "license": "MIT"
 }
