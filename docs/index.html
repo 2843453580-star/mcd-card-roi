@@ -34,6 +34,12 @@
   .login-box button { background:var(--red); color:#fff; border:none; border-radius:8px; padding:13px 22px; font-size:15px; font-weight:700; cursor:pointer; }
   .login-box button:disabled { opacity:.5; cursor:not-allowed; }
   .login-box .hint { font-size:12px; color:var(--dim); margin-top:14px; }
+  .token-guide { margin-top:18px; padding:16px 18px; background:#0d0d0d; border:1px solid var(--border); border-radius:8px; }
+  .token-guide .gtitle { color:var(--yellow); font-weight:600; margin-bottom:8px; font-size:14px; }
+  .token-guide ol { margin:0 0 12px 18px; font-size:13px; color:var(--dim); }
+  .token-guide ol li { margin:7px 0; }
+  .token-guide a { color:var(--yellow); }
+  .token-guide .btn { font-size:13px; padding:8px 16px; }
   #login-status { margin:12px 0; font-size:14px; min-height:20px; }
 
   .gen { display:grid; grid-template-columns: 340px 1fr; gap: 24px; align-items:start; }
@@ -113,7 +119,18 @@
       <input type="password" id="token" placeholder="粘贴 MCP Token（open.mcd.cn/mcp 控制台获取）" autocomplete="off">
       <button id="login-btn">一键拉取真实报告 →</button>
       <div id="login-status"></div>
-      <p class="hint">Token 只在你的浏览器里转发给麦当劳官方 MCP，代理不记录、不存储。申请：open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）。</p>
+
+      <div class="token-guide">
+        <div class="gtitle">📖 还没 Token？3 步拿到（1 分钟，免费）</div>
+        <ol>
+          <li>打开 <a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a>，点右上角 <b>【登录】</b></li>
+          <li>用手机号收验证码登录，右上角会变成 <b>【控制台】</b>，点开它</li>
+          <li>点 <b>【激活】</b> → 同意服务协议 → 复制 Token，回到这里粘贴</li>
+        </ol>
+        <a class="btn" href="https://open.mcd.cn/mcp" target="_blank">去获取 Token →</a>
+      </div>
+
+      <p class="hint">Token 只在你的浏览器里转发给麦当劳官方 MCP，代理不记录、不存储。</p>
     </div>
   </section>
 
