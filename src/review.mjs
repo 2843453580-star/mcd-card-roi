@@ -165,6 +165,19 @@ function roast(tagsArr, avg, count, cityCount) {
 }
 const roasts = roast(tags, avgValue, orderCount, cities.size);
 
+// ---------- 麦门年度颁奖（独家记忆点：根据数据颁一个专属奖） ----------
+function award(tagsArr, gradeVal) {
+  if (gradeVal === 'S') return '麦门终身成就奖';
+  if (gradeVal === 'A') return '麦门模范员工奖';
+  if (tagsArr.includes('四件套贵族')) return '麦门 VIP 金卡奖';
+  if (tagsArr.includes('早餐打卡党')) return '最卷打工人奖';
+  if (tagsArr.includes('深夜麦门人')) return '深夜加班陪伴奖';
+  if (tagsArr.includes('漂泊麦门客')) return '全国巡回吃堡奖';
+  if (tagsArr.includes('随心配信徒')) return '年度最抠门奖';
+  return '麦门潜力新人奖';
+}
+const awardTitle = award(tags, grade);
+
 // ---------- 省钱参谋（改进建议） ----------
 let cardItems = [];
 let topStoreName = storeTop.length ? storeTop[0][0] : null;
@@ -219,6 +232,7 @@ console.log(`  人设标签：${tags.join(' · ')}`);
 console.log(`  综合评级：${grade}${grade === 'S' ? '（麦门终身成就奖）' : grade === 'A' ? '（麦门模范员工）' : grade === 'B' ? '（稳定输出）' : grade === 'C+' ? '（凑合）' : grade === 'C-' ? '（抠搜但忠诚）' : '（试用期观察）'}`);
 console.log('  老板点评：');
 for (const r of roasts) console.log(`    「${r}」`);
+console.log(`  年度奖项：${awardTitle}`);
 
 console.log('\n【四、绩效改进建议（下一年怎么点更省）】');
 const pick = singleSet[0] || sorted[0];

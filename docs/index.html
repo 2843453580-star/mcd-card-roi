@@ -17,12 +17,7 @@
     --green: #4ec9b0;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-    line-height: 1.6;
-  }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; }
   a { color: var(--yellow); text-decoration: none; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
 
@@ -45,20 +40,14 @@
 
   .controls { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; }
   .controls .presets { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
-  .controls .presets button {
-    background:var(--card); color:var(--text); border:1px solid var(--border);
-    border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer;
-  }
+  .controls .presets button { background:var(--card); color:var(--text); border:1px solid var(--border); border-radius:999px; padding:6px 12px; font-size:13px; cursor:pointer; }
   .controls .presets button.on { background:var(--red); border-color:var(--red); color:#fff; }
   .field { margin-bottom: 14px; }
   .field label { display:flex; justify-content:space-between; font-size:13px; color:var(--dim); margin-bottom:6px; }
   .field label b { color:var(--yellow); font-weight:600; }
   .field input[type=range] { width:100%; accent-color: var(--red); }
 
-  .card {
-    background: var(--card); border:1px solid var(--border); border-radius:12px;
-    padding: 28px; position: sticky; top: 20px;
-  }
+  .card { background: var(--card); border:1px solid var(--border); border-radius:12px; padding: 28px; position: sticky; top: 20px; }
   .card .card-head { border-bottom: 3px solid var(--red); padding-bottom: 12px; margin-bottom: 18px; }
   .card .card-head .t1 { font-size: 22px; font-weight:700; }
   .card .card-head .t2 { color: var(--dim); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
@@ -68,17 +57,19 @@
   .card .row .v { text-align:right; }
 
   .gradebox { display:flex; align-items:center; gap:16px; margin-top:8px; }
-  .grade-stamp {
-    width:74px; height:74px; border-radius:50%; border:3px solid var(--red); color:var(--red);
-    display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:800;
-    transform: rotate(-12deg); flex-shrink:0;
-  }
+  .grade-stamp { width:74px; height:74px; border-radius:50%; border:3px solid var(--red); color:var(--red); display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:800; transform: rotate(-12deg); flex-shrink:0; }
   .grade-note { font-size:15px; }
   .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
   .tag { background:#2a2a2a; border:1px solid var(--border); border-radius:999px; padding:4px 12px; font-size:12px; color:var(--yellow); }
   .roast { background:#121212; border-left:3px solid var(--yellow); border-radius:6px; padding:12px 14px; margin:8px 0; font-size:14px; color:#f0f0f0; }
   .roast::before { content:"“"; color:var(--red); font-size:20px; }
   .roast::after { content:"”"; color:var(--red); font-size:20px; }
+
+  .award { margin-top:14px; background:linear-gradient(135deg, #2a1f00, #3a2a00); border:1px solid var(--yellow); border-radius:10px; padding:14px 16px; display:flex; align-items:center; gap:12px; }
+  .award .cup { font-size:30px; }
+  .award .aw { font-weight:700; color:var(--yellow); font-size:18px; }
+  .award .aw-sub { font-size:12px; color:var(--dim); }
+
   .advice li { font-size:14px; margin:8px 0 8px 18px; }
   .card .foot { margin-top:18px; padding-top:12px; border-top:1px solid var(--border); font-size:12px; color:var(--dim); }
 
@@ -86,7 +77,7 @@
   th,td { border:1px solid var(--border); padding:8px 10px; text-align:left; }
   th { background:var(--bg2); }
   .ok { color:var(--green); }
-  .warn { color:var(--yellow); }
+  .joke { color:var(--yellow); }
 
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   @media (max-width:820px){ .steps { grid-template-columns:1fr; } }
@@ -104,7 +95,7 @@
   <header>
     <span class="badge">麦当劳中国 MCP · 程序员创意开发大赛参赛作品</span>
     <h1>麦门<span class="hl">述职报告</span></h1>
-    <p class="sub">麦当劳给你出年度述职：你这一年点得怎么样、绩效评级几等、老板怎么点评你、下一年怎么点更省。</p>
+    <p class="sub">麦当劳的人事部（HR）来了：用你的点单数据，评绩效、发标签、毒舌点评，最后给你颁个年度奖。</p>
     <div class="cta">
       <a class="btn" href="#generator">在线生成 ↓</a>
       <a class="btn ghost" href="https://github.com/2843453580-star/mcd-card-roi">★ GitHub</a>
@@ -112,7 +103,7 @@
   </header>
 
   <section id="generator">
-    <h2><span class="num">①</span> 拖动滑块，实时生成你的述职报告</h2>
+    <h2><span class="num">①</span> 拖动滑块，让麦门 HR 给你出报告</h2>
     <div class="gen">
       <div class="controls">
         <div class="presets">
@@ -148,31 +139,35 @@
         </div>
         <div class="tags" id="tags"></div>
         <div id="roasts"></div>
+        <div class="award" id="award">
+          <div class="cup">🏆</div>
+          <div><div class="aw" id="award-title">年度最抠门奖</div><div class="aw-sub">麦门年度颁奖</div></div>
+        </div>
         <h3>四、绩效改进建议</h3>
         <ul class="advice" id="advice"></ul>
-        <div class="foot">注：评级与点评为娱乐化打分；省钱建议基于实时菜单计算。真实数据版见 <code>npm run review</code>。</div>
+        <div class="foot">注：评级、点评与奖项为娱乐化整活；省钱建议基于实时菜单。真实数据版见 <code>npm run review</code>。</div>
       </div>
     </div>
   </section>
 
   <section id="how">
-    <h2><span class="num">②</span> 怎么做到的</h2>
+    <h2><span class="num">②</span> 麦门 HR 的三板斧</h2>
     <div class="steps">
-      <div class="step"><div class="n">STEP 1 · 取数交给 MCP</div><p>通过麦当劳 MCP 拉取历史订单（order-list）、积分（query-my-account）、门店菜单（query-meals）。</p></div>
-      <div class="step"><div class="n">STEP 2 · 算术交给代码</div><p>本地聚合客单价、复购频率、时段、城市轨迹，再用规则引擎算人设标签与绩效评级。</p></div>
-      <div class="step"><div class="n">STEP 3 · 表达交给 Agent</div><p>生成毒舌点评 + 省钱参谋，输出一份可截图分享的述职报告。</p></div>
+      <div class="step"><div class="n">STEP 1 · 查你的底</div><p>拉历史订单（order-list）和积分（query-my-account），把你点过的单翻个底朝天。</p></div>
+      <div class="step"><div class="n">STEP 2 · 算你的账</div><p>聚合客单价、复购频率、时段、城市轨迹，算出你的麦门 KPI。</p></div>
+      <div class="step"><div class="n">STEP 3 · 评级 + 发奖</div><p>规则引擎生成人设标签、绩效评级、毒舌点评，再给你颁个年度奖。</p></div>
     </div>
   </section>
 
   <section id="real">
-    <h2><span class="num">③</span> 真实性对照</h2>
+    <h2><span class="num">③</span> 哪些是真的，哪些是整活</h2>
     <table>
       <tr><th>项目</th><th>性质</th><th>说明</th></tr>
-      <tr><td>画像数字（客单价/频率/门店/城市）</td><td class="ok">✅ 真实</td><td>由 order-list / query-my-account 实时返回</td></tr>
-      <tr><td>绩效评级 / 人设标签</td><td class="warn">🟡 娱乐化</td><td>规则引擎打分，仅供娱乐</td></tr>
-      <tr><td>毒舌点评</td><td class="warn">🟡 娱乐化</td><td>模板 + 真实数据拼装</td></tr>
-      <tr><td>省钱建议（麦金卡价差）</td><td class="ok">✅ 真实</td><td>实测：体验卡 15 天 ¥9.9、四件套 ¥58.5→¥28</td></tr>
-      <tr><td>积分数据</td><td class="ok">✅ 真实</td><td>query-my-account 返回的可用/已过期积分</td></tr>
+      <tr><td>客单价 / 频率 / 门店 / 城市</td><td class="ok">✅ 真</td><td>order-list / query-my-account 实时返回</td></tr>
+      <tr><td>省钱建议（麦金卡价差）</td><td class="ok">✅ 真</td><td>实测：体验卡 15 天 ¥9.9、四件套 ¥58.5→¥28</td></tr>
+      <tr><td>积分（可用 / 已过期）</td><td class="ok">✅ 真</td><td>query-my-account 返回</td></tr>
+      <tr><td>绩效评级 / 人设标签</td><td class="joke">🎭 整活</td><td>规则打分，仅供娱乐</td></tr>
+      <tr><td>毒舌点评 / 年度奖项</td><td class="joke">🎭 整活</td><td>模板 + 真实数据拼装</td></tr>
     </table>
   </section>
 
@@ -182,14 +177,14 @@
 git clone https://github.com/2843453580-star/mcd-card-roi.git
 cd mcd-card-roi
 cp .env.example .env   # 填入你的麦当劳 MCP Token
-npm run review         # 生成你的真实述职报告
+npm run review         # 生成你的真实述职报告 + 年度奖项
 npm run demo           # 或先看演示版</pre>
     <p style="margin-top:12px;color:var(--dim);font-size:14px;">MCP Token 申请：open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）。</p>
   </section>
 
   <footer>
     麦门述职报告 · 基于麦当劳中国 MCP · 非麦当劳官方产品<br>
-    评级与点评为娱乐化内容；餐品价格、卡权益、积分规则以麦当劳官方为准。
+    评级、点评与奖项为娱乐化内容；餐品价格、卡权益、积分规则以麦当劳官方为准。
   </footer>
 </div>
 
@@ -206,14 +201,9 @@ const PRESETS = {
 
 function params() {
   return {
-    orders: +$('orders').value,
-    avg: +$('avg').value,
-    perm: +$('perm').value,
-    cities: +$('cities').value,
-    late: +$('late').value,
-    bf: +$('bf').value,
-    suixin: +$('suixin').value,
-    set: +$('set').value,
+    orders: +$('orders').value, avg: +$('avg').value, perm: +$('perm').value,
+    cities: +$('cities').value, late: +$('late').value, bf: +$('bf').value,
+    suixin: +$('suixin').value, set: +$('set').value,
   };
 }
 
@@ -247,12 +237,23 @@ function compute(p) {
   if (tags.includes('四件套贵族')) roasts.push('顿顿四件套，麦门认证你为尊贵的 VIP 客户。');
   if (!roasts.length) roasts.push(`客单价 ¥${p.avg.toFixed(1)}，麦门评语：来都来了，别只点甜筒。`);
 
-  return { tags, grade, note, roasts };
+  // 年度颁奖
+  let award;
+  if (grade === 'S') award = '麦门终身成就奖';
+  else if (grade === 'A') award = '麦门模范员工奖';
+  else if (tags.includes('四件套贵族')) award = '麦门 VIP 金卡奖';
+  else if (tags.includes('早餐打卡党')) award = '最卷打工人奖';
+  else if (tags.includes('深夜麦门人')) award = '深夜加班陪伴奖';
+  else if (tags.includes('漂泊麦门客')) award = '全国巡回吃堡奖';
+  else if (tags.includes('随心配信徒')) award = '年度最抠门奖';
+  else award = '麦门潜力新人奖';
+
+  return { tags, grade, note, roasts, award };
 }
 
 function render() {
   const p = params();
-  for (const k in p) { $('v-' + ({suixin:'suixin',set:'set',perm:'perm'}[k]||k)).textContent = p[k]; }
+  for (const k in p) { $('v-' + k).textContent = p[k]; }
   const r = compute(p);
 
   const total = (p.orders * p.avg).toFixed(0);
@@ -278,6 +279,7 @@ function render() {
   $('grade-note').textContent = r.note;
   $('tags').innerHTML = r.tags.map(t => `<span class="tag">${t}</span>`).join('');
   $('roasts').innerHTML = r.roasts.map(x => `<div class="roast">${x}</div>`).join('');
+  $('award-title').textContent = r.award;
 
   const advice = [];
   if (p.suixin >= 40) {
