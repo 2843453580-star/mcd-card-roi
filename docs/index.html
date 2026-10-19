@@ -369,7 +369,12 @@ async function mcpFetch(token, sessionId, payload) {
     body: JSON.stringify({ token, sessionId, payload }),
   });
   const sid = res.headers.get('Mcp-Session-Id');
-  const data = await res.json();
+  // 通知类请求（如 notifications/initialized）返回空 body(202)，不能硬调 res.json()
+  const text = await res.text();
+  let data = null;
+  if (text) {
+    try { data = JSON.parse(text); } catch (e) { data = null; }
+  }
   return { sid, data };
 }
 
