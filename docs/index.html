@@ -95,15 +95,16 @@
   <header>
     <span class="badge">麦当劳中国 MCP · 程序员创意开发大赛参赛作品</span>
     <h1>麦门<span class="hl">述职报告</span></h1>
-    <p class="sub">麦当劳的人事部（HR）来了：用你的点单数据，评绩效、发标签、毒舌点评，最后给你颁个年度奖。</p>
+    <p class="sub">麦当劳的人事部（HR）来了：用你的点单数据，评绩效、发标签、毒舌点评，最后给你颁个年度奖。<br><strong>登录自动拉取你的真实订单，不用记任何数字</strong>；也可以先在下面随便玩。</p>
     <div class="cta">
-      <a class="btn" href="#generator">在线生成 ↓</a>
+      <a class="btn" href="#install">真实一键 ↓ 登录自动拉取</a>
+      <a class="btn ghost" href="#generator">无 Token 玩具</a>
       <a class="btn ghost" href="https://github.com/2843453580-star/mcd-performance-review">★ GitHub</a>
     </div>
   </header>
 
   <section id="generator">
-    <h2><span class="num">①</span> 拖动滑块，让麦门 HR 给你出报告</h2>
+    <h2><span class="num">①</span> 玩具模式 · 无 Token 随便拖（演示数据，非真实）</h2>
     <div class="gen">
       <div class="controls">
         <div class="presets">
@@ -172,14 +173,14 @@
   </section>
 
   <section id="install">
-    <h2><span class="num">④</span> 用你的真实订单生成</h2>
+    <h2><span class="num">④</span> 真实一键 · 登录自动拉取你的订单（0 手动，0 记数字）</h2>
     <pre># 零依赖，仅需 Node >= 18
 git clone https://github.com/2843453580-star/mcd-performance-review.git
 cd mcd-performance-review
 cp .env.example .env   # 填入你的麦当劳 MCP Token
 npm run review         # 生成你的真实述职报告 + 年度奖项
 npm run demo           # 或先看演示版</pre>
-    <p style="margin-top:12px;color:var(--dim);font-size:14px;">MCP Token 申请：open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）。</p>
+    <p style="margin-top:12px;color:var(--dim);font-size:14px;"><code>npm run review</code> 会自动拉取你的历史订单 + 积分 + 门店菜单，算出真实画像与评级，不用你记订单数、客单价这些数字。<br>MCP Token 申请：open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）。</p>
   </section>
 
   <footer>
