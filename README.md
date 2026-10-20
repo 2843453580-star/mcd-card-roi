@@ -31,8 +31,6 @@
 
 ![网页界面](images/site.png)
 
-![述职报告输出示例](images/demo.png)
-
 ---
 
 ## 年度颁奖（本作品最"出片"的地方）
@@ -147,8 +145,7 @@ mcd-performance-review/
 ├── docs/
 │   └── index.html            # 在线玩具预览（零依赖静态页）
 ├── images/
-│   ├── site.png              # 网页界面截图
-│   └── demo.png              # 述职报告输出示例
+│   └── site.png              # 网页界面截图
 ├── cloud/
 │   ├── fc-proxy.js           # 国内云函数中转（可选）
 │   └── README.md             # 云函数部署说明
