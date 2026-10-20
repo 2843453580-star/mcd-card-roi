@@ -63,7 +63,19 @@
 
 ---
 
-## 快速开始
+## 安装 WorkBuddy 技能（推荐，对话里直接用）
+
+1. **配好麦当劳 MCP**：WorkBuddy 左侧【专家·技能·连接器】→【连接器】→【自定义连接器】→【配置 MCP】，填入 [`mcp-config.example.json`](mcp-config.example.json)，把 `${MCD_MCP_TOKEN}` 换成你的真实 Token，保存后【启用】。
+2. **安装技能**：把仓库里的 `skills/mcd-performance-review/` 整个文件夹，复制到 WorkBuddy 的技能目录：
+   - Windows：`%USERPROFILE%\.workbuddy\skills\`
+   - macOS / Linux：`~/.workbuddy/skills/`
+3. **使用**：在对话框里说「给我出份麦门述职报告」，它就会自动拉你的订单、算评级、发奖、给省钱建议。
+
+> Token 申请：https://open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）。
+
+---
+
+## 命令行版（可选）
 
 ```bash
 # 1. 申请麦当劳 MCP Token：https://open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）
@@ -129,10 +141,17 @@ mcd-performance-review/
 ├── mcp-config.example.json   # 脱敏 MCP 配置（仅环境变量占位符）
 ├── .env.example              # 本地环境变量模板
 ├── package.json
+├── skills/
+│   └── mcd-performance-review/
+│       └── SKILL.md          # ← WorkBuddy 技能（核心交付物）
 ├── docs/
-│   └── index.html            # 在线述职报告生成器（零依赖静态页）
+│   └── index.html            # 在线玩具预览（零依赖静态页）
 ├── images/
-│   └── demo.png              # 述职报告示例截图
+│   ├── site.png              # 网页界面截图
+│   └── demo.png              # 述职报告输出示例
+├── cloud/
+│   ├── fc-proxy.js           # 国内云函数中转（可选）
+│   └── README.md             # 云函数部署说明
 └── src/
     ├── mcp.mjs               # 极简 Streamable HTTP MCP 客户端
     ├── probe.mjs             # 工具清单探针
