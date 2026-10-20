@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>麦门述职报告 · 在线玩具预览 | mcd-performance-review</title>
+<title>麦门述职报告 · 在线生成 | mcd-performance-review</title>
 <style>
   :root {
     --red: #DA291C; --yellow: #FFC72C; --bg: #121212; --bg2: #1a1a1a;
@@ -28,6 +28,25 @@
   h2 { font-size: 24px; margin-bottom: 16px; }
   h2 .num { color: var(--red); }
 
+  .login-box { background: var(--bg2); border:1px solid var(--yellow); border-radius:12px; padding:26px; max-width:680px; }
+  .login-box p.lead { font-size:14px; color:var(--dim); }
+  .login-box input { width:100%; background:#0d0d0d; border:1px solid var(--border); border-radius:8px; padding:13px; color:var(--text); font-size:14px; margin:14px 0 8px; font-family: monospace; }
+  .login-box button { background:var(--red); color:#fff; border:none; border-radius:8px; padding:13px 22px; font-size:15px; font-weight:700; cursor:pointer; }
+  .login-box button:disabled { opacity:.5; cursor:not-allowed; }
+  .login-box .hint { font-size:12px; color:var(--dim); margin-top:14px; }
+  .token-guide { margin-top:18px; padding:16px 18px; background:#0d0d0d; border:1px solid var(--border); border-radius:8px; }
+  .token-guide .gtitle { color:var(--yellow); font-weight:600; margin-bottom:8px; font-size:14px; }
+  .token-guide ol { margin:0 0 12px 18px; font-size:13px; color:var(--dim); }
+  .token-guide ol li { margin:7px 0; }
+  .token-guide a { color:var(--yellow); }
+  .token-guide .btn { font-size:13px; padding:8px 16px; }
+  .why { margin-top:14px; padding:14px 16px; background:#0d0d0d; border:1px solid var(--border); border-radius:8px; }
+  .why-title { color:var(--yellow); font-weight:600; font-size:14px; margin-bottom:8px; }
+  .why ul { margin:0 0 0 18px; font-size:13px; color:var(--dim); }
+  .why ul li { margin:7px 0; }
+  .why code { color:var(--green); background:#1a1a1a; padding:1px 5px; border-radius:4px; }
+  #login-status { margin:12px 0; font-size:14px; min-height:20px; }
+
   .gen { display:grid; grid-template-columns: 340px 1fr; gap: 24px; align-items:start; }
   @media (max-width: 820px){ .gen { grid-template-columns: 1fr; } }
   .controls { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:20px; }
@@ -48,7 +67,9 @@
   .card .row .k { color: var(--dim); }
   .card .row .v { text-align:right; }
 
-  .src-badge { display:inline-block; font-size:11px; border-radius:6px; padding:2px 8px; margin-left:8px; vertical-align:middle; background:#2a2a2a; color:var(--dim); }
+  .src-badge { display:inline-block; font-size:11px; border-radius:6px; padding:2px 8px; margin-left:8px; vertical-align:middle; }
+  .src-toy { background:#2a2a2a; color:var(--dim); }
+  .src-real { background:#0a3d2e; color:var(--green); }
 
   .gradebox { display:flex; align-items:center; gap:16px; margin-top:8px; }
   .grade-stamp { width:74px; height:74px; border-radius:50%; border:3px solid var(--red); color:var(--red); display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:800; transform: rotate(-12deg); flex-shrink:0; }
@@ -79,12 +100,6 @@
   .step p { font-size:13px; color:var(--dim); margin-top:8px; }
 
   pre { background:#0d0d0d; border:1px solid var(--border); border-radius:8px; padding:16px; overflow-x:auto; font-size:13px; }
-  .token-guide { margin-top:16px; padding:16px 18px; background:#0d0d0d; border:1px solid var(--border); border-radius:8px; }
-  .token-guide .gtitle { color:var(--yellow); font-weight:600; margin-bottom:8px; font-size:14px; }
-  .token-guide ol { margin:0 0 12px 18px; font-size:13px; color:var(--dim); }
-  .token-guide ol li { margin:7px 0; }
-  .token-guide a { color:var(--yellow); }
-  .token-guide .btn { font-size:13px; padding:8px 16px; }
   footer { text-align:center; padding: 40px 0 60px; color:var(--dim); font-size:13px; }
 </style>
 </head>
@@ -94,16 +109,48 @@
   <header>
     <span class="badge">麦当劳中国 MCP · 程序员创意开发大赛参赛作品</span>
     <h1>麦门<span class="hl">述职报告</span></h1>
-    <p class="sub">麦当劳的人事部（HR）来了：用你的点单数据，评绩效、发标签、毒舌点评，最后给你颁个年度奖。<br><strong>网页版是玩具预览（随便拖）；真实数据请用命令行版，自动拉取、0 手动。</strong></p>
+    <p class="sub">麦当劳的人事部（HR）来了：用你的点单数据，评绩效、发标签、毒舌点评，最后给你颁个年度奖。<br><strong>登录自动拉取你的真实订单，不用记任何数字</strong>。</p>
     <div class="cta">
-      <a class="btn" href="#toy">玩具预览 ↓</a>
-      <a class="btn ghost" href="#cli">真实数据 · 命令行版</a>
+      <a class="btn" href="#login">真实一键 ↓ 登录自动拉取</a>
+      <a class="btn ghost" href="#toy">无 Token 玩具</a>
       <a class="btn ghost" href="https://github.com/2843453580-star/mcd-performance-review">★ GitHub</a>
     </div>
   </header>
 
+  <section id="login">
+    <h2><span class="num">①</span> 真实一键 · 登录自动拉取你的订单</h2>
+    <div class="login-box">
+      <p class="lead">粘贴你的麦当劳 MCP Token，自动拉取你的<b style="color:var(--yellow)">历史订单 + 积分</b>，算出真实画像、评级和年度奖项。0 手动、0 记数字。</p>
+
+      <div class="why">
+        <div class="why-title">🔑 为什么要贴 Token？</div>
+        <ul>
+          <li><b>为了让报告是「你的」</b>：订单和积分都绑在你自己的麦当劳账号上，只有用你自己的 MCP Token 才能拉到你真实的订单数据；没有 Token，只能看演示数据。</li>
+          <li><b>只读，不下单</b>：本页只调用 <code>order-list</code>（查订单）和 <code>query-my-account</code>（查积分）两个只读工具，不会下单、不动你的券和积分。</li>
+          <li><b>不落库、可撤回</b>：Token 只在你浏览器 → 麦当劳官方 MCP 这条链路上，中转代理不记录、不存储；随时可去控制台重置。</li>
+        </ul>
+      </div>
+
+      <input type="password" id="token" placeholder="粘贴 MCP Token（open.mcd.cn/mcp 控制台获取）" autocomplete="off">
+      <button id="login-btn">一键拉取真实报告 →</button>
+      <div id="login-status"></div>
+
+      <div class="token-guide">
+        <div class="gtitle">📖 还没 Token？3 步拿到（1 分钟，免费）</div>
+        <ol>
+          <li>打开 <a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a>，点右上角 <b>【登录】</b></li>
+          <li>用手机号收验证码登录，右上角会变成 <b>【控制台】</b>，点开它</li>
+          <li>点 <b>【激活】</b> → 同意服务协议 → 复制 Token，回到这里粘贴</li>
+        </ol>
+        <a class="btn" href="https://open.mcd.cn/mcp" target="_blank">去获取 Token →</a>
+      </div>
+
+      <p class="hint">Token 只在你的浏览器里转发给麦当劳官方 MCP，代理不记录、不存储。</p>
+    </div>
+  </section>
+
   <section id="toy">
-    <h2><span class="num">①</span> 玩具预览 · 拖动滑块（演示数据，非真实）</h2>
+    <h2><span class="num">②</span> 玩具模式 · 无 Token 随便拖（演示数据，非真实）</h2>
     <div class="gen">
       <div class="controls">
         <div class="presets">
@@ -125,7 +172,7 @@
 
       <div class="card" id="report">
         <div class="card-head">
-          <div class="t1">麦门述职报告 · 年度绩效回顾 <span class="src-badge">演示数据</span></div>
+          <div class="t1">麦门述职报告 · 年度绩效回顾 <span class="src-badge src-toy" id="src-badge">演示数据</span></div>
           <div class="t2">McDonald's Performance Review</div>
         </div>
         <h3>一、你的麦门履历</h3>
@@ -139,39 +186,15 @@
         </div>
         <div class="tags" id="tags"></div>
         <div id="roasts"></div>
-        <div class="award">
+        <div class="award" id="award">
           <div class="cup">🏆</div>
           <div><div class="aw" id="award-title">年度最抠门奖</div><div class="aw-sub">麦门年度颁奖</div></div>
         </div>
         <h3>四、绩效改进建议</h3>
         <ul class="advice" id="advice"></ul>
-        <div class="foot">注：评级、点评与奖项为娱乐化整活；这里是玩具预览，真实数据请用命令行版。</div>
+        <div class="foot">注：评级、点评与奖项为娱乐化整活；省钱建议基于实时菜单。</div>
       </div>
     </div>
-  </section>
-
-  <section id="cli">
-    <h2><span class="num">②</span> 真实数据 · 命令行版（自动拉取，0 手动）</h2>
-    <pre># 零依赖，仅需 Node >= 18
-git clone https://github.com/2843453580-star/mcd-performance-review.git
-cd mcd-performance-review
-cp .env.example .env   # 填入你的麦当劳 MCP Token
-npm run review         # 自动拉取你的真实订单 + 积分，生成述职报告 + 年度奖项
-npm run demo           # 或先看一份演示报告</pre>
-
-    <div class="token-guide">
-      <div class="gtitle">📖 需要 Token？3 步拿到（1 分钟，免费）</div>
-      <ol>
-        <li>打开 <a href="https://open.mcd.cn/mcp" target="_blank">open.mcd.cn/mcp</a>，点右上角 <b>【登录】</b></li>
-        <li>用手机号收验证码登录，右上角会变成 <b>【控制台】</b>，点开它</li>
-        <li>点 <b>【激活】</b> → 同意服务协议 → 复制 Token，填进 <code>.env</code> 的 <code>MCD_MCP_TOKEN=</code> 后面</li>
-      </ol>
-      <a class="btn" href="https://open.mcd.cn/mcp" target="_blank">去获取 Token →</a>
-    </div>
-
-    <p style="margin-top:14px;color:var(--dim);font-size:13px;">
-      为什么推荐命令行版？麦当劳 MCP（mcp.mcd.cn）国内直连可达；而网页要绕开浏览器跨域限制需要一个外部代理（workers.dev），国内多数网络访问不了，所以网页只做玩具预览。
-    </p>
   </section>
 
   <section id="how">
@@ -187,22 +210,35 @@ npm run demo           # 或先看一份演示报告</pre>
     <h2><span class="num">④</span> 哪些是真的，哪些是整活</h2>
     <table>
       <tr><th>项目</th><th>性质</th><th>说明</th></tr>
-      <tr><td>客单价 / 频率 / 门店 / 城市</td><td class="ok">✅ 真</td><td>命令行版由 order-list / query-my-account 实时返回</td></tr>
+      <tr><td>客单价 / 频率 / 门店 / 城市</td><td class="ok">✅ 真</td><td>order-list / query-my-account 实时返回</td></tr>
       <tr><td>省钱建议（麦金卡价差）</td><td class="ok">✅ 真</td><td>实测：体验卡 15 天 ¥9.9、四件套 ¥58.5→¥28</td></tr>
-      <tr><td>积分（可用 / 已过期）</td><td class="ok">✅ 真</td><td>命令行版由 query-my-account 返回</td></tr>
+      <tr><td>积分（可用 / 已过期）</td><td class="ok">✅ 真</td><td>query-my-account 返回</td></tr>
       <tr><td>绩效评级 / 人设标签</td><td class="joke">🎭 整活</td><td>规则打分，仅供娱乐</td></tr>
       <tr><td>毒舌点评 / 年度奖项</td><td class="joke">🎭 整活</td><td>模板 + 真实数据拼装</td></tr>
     </table>
   </section>
 
+  <section id="install">
+    <h2><span class="num">⑤</span> 命令行真实版（也可本地跑，不经代理）</h2>
+    <pre># 零依赖，仅需 Node >= 18
+git clone https://github.com/2843453580-star/mcd-performance-review.git
+cd mcd-performance-review
+cp .env.example .env   # 填入你的麦当劳 MCP Token
+npm run review         # 生成你的真实述职报告 + 年度奖项</pre>
+    <p style="margin-top:12px;color:var(--dim);font-size:14px;">MCP Token 申请：open.mcd.cn/mcp（手机号登录 → 控制台 → 激活）。</p>
+  </section>
+
   <footer>
     麦门述职报告 · 基于麦当劳中国 MCP · 非麦当劳官方产品<br>
-    网页为玩具预览；真实数据由命令行版拉取。评级、点评与奖项为娱乐化内容。
+    评级、点评与奖项为娱乐化内容；餐品价格、卡权益、积分规则以麦当劳官方为准。
   </footer>
 </div>
 
 <script>
 const $ = (id) => document.getElementById(id);
+
+// Cloudflare Worker 代理地址（已部署）
+const WORKER_URL = 'https://mcd-proxy.2843453580.workers.dev';
 
 const PRESETS = {
   student: { orders:15, avg:18, perm:1.5, cities:2, late:3, bf:0, suixin:70, set:0 },
@@ -211,6 +247,8 @@ const PRESETS = {
   night:   { orders:40, avg:28, perm:5,   cities:2, late:20, bf:5, suixin:30, set:20 },
   newbie:  { orders:3,  avg:15, perm:0.5, cities:1, late:1, bf:0, suixin:30, set:0 },
 };
+
+const CITY_LIST = '北京 上海 广州 深圳 天津 重庆 杭州 南京 苏州 成都 武汉 西安 长沙 郑州 青岛 济南 合肥 福州 厦门 南昌 昆明 贵阳 南宁 海口 三亚 哈尔滨 长春 沈阳 大连 石家庄 太原 呼和浩特 乌鲁木齐 兰州 西宁 银川 珠海 佛山 东莞 中山 惠州 江门 汕头 湛江 温州 宁波 嘉兴 绍兴 金华 台州 泉州 漳州 无锡 常州 南通 徐州 扬州 镇江 盐城 烟台 潍坊 临沂 洛阳 唐山 保定 廊坊 邯郸'.split(' ');
 
 function params() {
   return {
@@ -263,7 +301,7 @@ function compute(p) {
   return { tags, grade, note, roasts, award };
 }
 
-function renderFrom(p) {
+function renderFrom(p, source, points) {
   for (const k in p) { const el = $('v-' + k); if (el) el.textContent = p[k]; }
   const r = compute(p);
 
@@ -292,14 +330,140 @@ function renderFrom(p) {
   $('roasts').innerHTML = r.roasts.map(x => `<div class="roast">${x}</div>`).join('');
   $('award-title').textContent = r.award;
 
+  const badge = $('src-badge');
+  if (source === 'real') {
+    badge.textContent = '你的真实数据';
+    badge.className = 'src-badge src-real';
+  } else {
+    badge.textContent = '演示数据';
+    badge.className = 'src-badge src-toy';
+  }
+
   const advice = [];
   if (p.suixin >= 40) advice.push('省钱：把 2 单随心配升级成麦金卡四件套（¥58.5→¥28），15 天内净省 ¥54+');
   else if (p.set >= 30) advice.push('省钱：你已在吃四件套，加麦金卡体验卡（15 天 ¥9.9）可再省 ¥30.5/单');
   else advice.push('省钱：试试 ¥13.9 随心配打底 + 麦金卡四件套，兼顾省钱与吃饱');
   advice.push('效率：到店自取比外送省配送费，午休 30 分钟选四件套最快');
-  advice.push('积分止损：别让积分悄悄过期，去麦麦商城兑换');
+  if (points) {
+    const avail = Number(points.availablePoint || 0);
+    const expired = Number(points.expiredPoint || 0);
+    advice.push(`积分止损：你已有 ${expired} 积分悄悄过期；现有 ${avail} 积分可用，去麦麦商城兑换，别再让它过期`);
+  } else {
+    advice.push('积分止损：别让积分悄悄过期，去麦麦商城兑换');
+  }
   $('advice').innerHTML = advice.map(x => `<li>${x}</li>`).join('');
 }
+
+// ---------- 真实一键：通过 Cloudflare Worker 调用 MCP ----------
+function extractJson(text) {
+  if (!text) return null;
+  const m = text.match(/\{"success":true[\s\S]*\}$/);
+  if (m) { try { return JSON.parse(m[0]); } catch (e) {} }
+  try { return JSON.parse(text); } catch (e) { return null; }
+}
+
+async function mcpFetch(token, sessionId, payload) {
+  const res = await fetch(WORKER_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token, sessionId, payload }),
+  });
+  const sid = res.headers.get('Mcp-Session-Id');
+  // 通知类请求（如 notifications/initialized）返回空 body(202)，不能硬调 res.json()
+  const text = await res.text();
+  let data = null;
+  if (text) {
+    try { data = JSON.parse(text); } catch (e) { data = null; }
+  }
+  return { sid, data };
+}
+
+function toolText(data) {
+  const content = data && data.result && data.result.content;
+  if (!Array.isArray(content)) return '';
+  return content.filter(c => c && c.type === 'text').map(c => c.text).join('\n');
+}
+
+function ordersToParams(orders) {
+  const count = orders.length;
+  let spend = 0;
+  orders.forEach(o => spend += Number(o.realTotalAmount || 0));
+  const avg = count ? spend / count : 0;
+  const times = orders.map(o => new Date(String(o.createTime).replace(' ', 'T'))).filter(d => !isNaN(d));
+  const first = times.length ? times.reduce((a, b) => a < b ? a : b) : null;
+  const last = times.length ? times.reduce((a, b) => a > b ? a : b) : null;
+  const span = first && last ? Math.round((last - first) / 86400000) : 0;
+  const perMonth = span ? (count / span) * 30 : 0;
+
+  const cities = new Set();
+  orders.forEach(o => {
+    const n = String(o.storeName || '');
+    CITY_LIST.forEach(c => { if (n.includes(c)) cities.add(c); });
+  });
+
+  let late = 0, bf = 0;
+  times.forEach(t => { const h = t.getHours(); if (h >= 21 || h < 5) late++; else if (h >= 5 && h < 10) bf++; });
+
+  let suixin = 0, set = 0;
+  orders.forEach(o => (o.orderProductList || []).forEach(p => {
+    const n = p.productName || '';
+    if (/随心配|1\+1|6\+3/.test(n)) suixin++;
+    if (/四件套|双人|多人|全家|分享/.test(n)) set++;
+  }));
+
+  return {
+    orders: count,
+    avg: Math.round(avg * 10) / 10,
+    perm: Math.round(perMonth * 10) / 10,
+    cities: cities.size,
+    late, bf,
+    suixin: count ? Math.round(suixin / count * 100) : 0,
+    set: count ? Math.round(set / count * 100) : 0,
+  };
+}
+
+async function doLogin() {
+  const token = $('token').value.trim();
+  const status = $('login-status');
+  const btn = $('login-btn');
+  if (!token) { status.innerHTML = '⚠️ 请先粘贴你的 MCP Token'; return; }
+
+  btn.disabled = true;
+  status.innerHTML = '正在拉取你的真实订单…';
+  let sessionId = null;
+
+  try {
+    let r = await mcpFetch(token, sessionId, { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'mcd-performance-review', version: '0.2.0' } } });
+    sessionId = r.sid || sessionId;
+    if (r.data && r.data.error) throw new Error(r.data.error.message);
+
+    await mcpFetch(token, sessionId, { jsonrpc: '2.0', method: 'notifications/initialized' });
+
+    r = await mcpFetch(token, sessionId, { jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: 'order-list', arguments: {} } });
+    sessionId = r.sid || sessionId;
+    if (r.data && r.data.error) throw new Error(r.data.error.message);
+    const orders = (extractJson(toolText(r.data))?.data?.list) || [];
+
+    r = await mcpFetch(token, sessionId, { jsonrpc: '2.0', id: 3, method: 'tools/call', params: { name: 'query-my-account', arguments: {} } });
+    const points = extractJson(toolText(r.data))?.data || null;
+
+    if (!orders.length) {
+      status.innerHTML = '😅 你的账号还没有历史订单，先去点几单再来出报告吧';
+      btn.disabled = false;
+      return;
+    }
+
+    renderFrom(ordersToParams(orders), 'real', points);
+    status.innerHTML = `✅ 已拉取 <b>${orders.length}</b> 单真实数据，报告已生成 ↓`;
+    $('report').scrollIntoView({ behavior: 'smooth' });
+  } catch (e) {
+    status.innerHTML = '❌ 拉取失败：' + (e.message || e);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+$('login-btn').addEventListener('click', doLogin);
 
 document.querySelectorAll('.presets button').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -309,12 +473,12 @@ document.querySelectorAll('.presets button').forEach(btn => {
     $('orders').value = p.orders; $('avg').value = p.avg; $('perm').value = p.perm;
     $('cities').value = p.cities; $('late').value = p.late; $('bf').value = p.bf;
     $('suixin').value = p.suixin; $('set').value = p.set;
-    renderFrom(params());
+    renderFrom(params(), 'toy', null);
   });
 });
 
-document.querySelectorAll('input[type=range]').forEach(inp => inp.addEventListener('input', () => renderFrom(params())));
-renderFrom(params());
+document.querySelectorAll('input[type=range]').forEach(inp => inp.addEventListener('input', () => renderFrom(params(), 'toy', null)));
+renderFrom(params(), 'toy', null);
 </script>
 </body>
 </html>
