@@ -27,9 +27,11 @@
 | 我该领什么奖？ | **年度颁奖**：年度最抠门奖 / 深夜加班陪伴奖 / 全国巡回吃堡奖 … |
 | 下一年怎么点更省？ | 省钱参谋：省钱 / 效率 / 积分止损 |
 
-🎮 **在线生成（无需 Token）**：<https://2843453580-star.github.io/mcd-performance-review/> —— 拖滑块或点预设角色，实时生成你的述职报告。
+🎮 **在线预览（无需 Token）**：<https://2843453580-star.github.io/mcd-performance-review/> —— 拖滑块或点预设角色，实时生成你的述职报告。
 
-![麦门述职报告示例](images/demo.png)
+![网页界面](images/site.png)
+
+![述职报告输出示例](images/demo.png)
 
 ---
 
